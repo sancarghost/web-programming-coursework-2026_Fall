@@ -5,8 +5,26 @@ const events = [
 ];
 
 // TODO 1: write seatsRemaining(event).
-// TODO 2: write eventStatus(event).
-// TODO 3: write filterEvents(allEvents, category).
-// TODO 4: write summarizeEvents(allEvents).
+function seatsRemaining(event){
+  return event.capacity-event.registered; }
 
+// TODO 2: write eventStatus(event).
+function eventStatus(event){
+  const remaining= seatsRemaining(event);
+  if(remainig===0) return "full";
+  if(remaining <=10) return "almost full";
+  return "available";  }
+// TODO 3: write filterEvents(allEvents, category).
+function filterEvents(allEvents, category){
+  if(!category || category === "all"){
+    return allEvents;
+  }
+  return allEvents.filter((event) => event.category ===category);
+// TODO 4: write summarizeEvents(allEvents).
+function summarizeEvents(allEvents){
+  return allEvents.map((event) => ({
+    title: event.category,
+    remaining: seatsRemaining(event)
+      status: eventStatus(event),
+    }));
 console.table(events);
